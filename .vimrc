@@ -14,7 +14,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
+Plugin 'blueyed/vim-diminactive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -34,9 +34,20 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set autoindent
+set smartindent
 set autoread
 set noswapfile
 syntax on
 
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
+
+" For pane switching
+nnoremap <C-Down> <C-W><C-J>
+nnoremap <C-Up> <C-W><C-K>
+nnoremap <C-Right> <C-W><C-L>
+nnoremap <C-Left> <C-W><C-H>
+
+" Set the background of inactive panes
+highlight ColorColumn term=reverse cterm=NONE ctermfg=NONE gui=NONE guifg=NONE guibg=Green ctermbg=30

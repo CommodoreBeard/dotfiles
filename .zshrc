@@ -87,16 +87,16 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 #
 DEFAULT_USER="joseph"
 alias cat="ccat"
-export NVM_DIR="/Users/joseph/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+#export NVM_DIR="/Users/joseph/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/joseph/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/joseph/google-cloud-sdk/path.zsh.inc'; fi
+#if [ -f '/Users/joseph/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/joseph/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/joseph/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/joseph/google-cloud-sdk/completion.zsh.inc'; fi
+#if [ -f '/Users/joseph/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/joseph/google-cloud-sdk/completion.zsh.inc'; fi
 
 # vs code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
