@@ -9,6 +9,24 @@ export ZSH=/Users/joseph/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="avit"
 
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -51,7 +69,12 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(
+  git 
+  kubectl kube-ps1 helm docker docker-compose 
+  jx
+  zsh-autopair zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,16 +110,17 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 #
 DEFAULT_USER="joseph"
 alias cat="ccat"
-#export NVM_DIR="/Users/joseph/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+eval $(thefuck --alias)
 
+# NVM
+export NVM_DIR="$HOME/.nvm" && . "/usr/local/opt/nvm/nvm.sh"
+
+# SDK man
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# The next line updates PATH for the Google Cloud SDK.
-#if [ -f '/Users/joseph/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/joseph/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-#if [ -f '/Users/joseph/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/joseph/google-cloud-sdk/completion.zsh.inc'; fi
 
 # vs code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+#AWS Profile
+export AWS_PROFILE=gfk-aws-phoenix-dev
+export PATH=$PATH:~/scripts
