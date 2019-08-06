@@ -120,7 +120,3 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # vs code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-#AWS Profile
-export AWS_PROFILE=gfk-aws-phoenix-dev
-export PATH=$PATH:~/scripts
