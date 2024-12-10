@@ -2,12 +2,14 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/joseph/.oh-my-zsh
+export ZSH=/Users/joe/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="avit"
+ZSH_THEME=""
+# pure prompt installed via brew 
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
 
 HISTFILE="$HOME/.zsh_history"
@@ -71,9 +73,7 @@ setopt HIST_BEEP
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git 
-  kubectl kube-ps1 helm docker docker-compose 
-  jx
-  zsh-autopair zsh-autosuggestions
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -108,15 +108,56 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
-DEFAULT_USER="joseph"
-alias cat="ccat"
-eval $(thefuck --alias)
+DEFAULT_USER="joe"
 
 # NVM
-export NVM_DIR="$HOME/.nvm" && . "/usr/local/opt/nvm/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # SDK man
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # vs code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export PATH="/Library/PostgreSQL/14/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/joe/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/joe/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# bun completions
+[ -s "/Users/joe/.bun/_bun" ] && source "/Users/joe/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
+# lvim
+export PATH=/Users/joe/.local/bin:$PATH
+
+# pure prompt
+autoload -U promptinit; promptinit
+prompt pure
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# pure prompt
+autoload -U promptinit; promptinit
+
+# z nav
+source "$(brew --prefix)/etc/profile.d/z.sh"
